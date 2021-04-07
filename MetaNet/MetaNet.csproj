@@ -2,6 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <Title>MetaNet</Title>
+        <Authors>David Stojanovski</Authors>
+        <Description>Common abstractions, helpers and code generators</Description>
+        <RepositoryUrl>https://github.com/dgstojanovski/MetaNet</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
