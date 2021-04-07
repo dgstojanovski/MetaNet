@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaNet", "MetaNet\MetaNet.csproj", "{8779846F-156F-411D-89EF-FFDFE34E7A27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{971CCD3F-4CB3-4B54-9021-B01FD7266722}"
+ProjectSection(SolutionItems) = preProject
+	.gitignore = .gitignore
+	NuGet.config = NuGet.config
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{D413893D-DBBD-4113-87E2-30E17E145D2A}"
+ProjectSection(SolutionItems) = preProject
+	.github\workflows\release-candidate.yml = .github\workflows\release-candidate.yml
+	.github\workflows\release-development.yml = .github\workflows\release-development.yml
+	.github\workflows\release-stable.yml = .github\workflows\release-stable.yml
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{B019F833-1261-4802-A00C-FC8CBC36E3BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generate", "Generate", "{5090C8B9-51FA-4177-B498-6AE838DEE257}"
+ProjectSection(SolutionItems) = preProject
+	.github\actions\generate-release\action.yml = .github\actions\generate-release\action.yml
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8779846F-156F-411D-89EF-FFDFE34E7A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8779846F-156F-411D-89EF-FFDFE34E7A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8779846F-156F-411D-89EF-FFDFE34E7A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8779846F-156F-411D-89EF-FFDFE34E7A27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D413893D-DBBD-4113-87E2-30E17E145D2A} = {971CCD3F-4CB3-4B54-9021-B01FD7266722}
+		{B019F833-1261-4802-A00C-FC8CBC36E3BD} = {971CCD3F-4CB3-4B54-9021-B01FD7266722}
+		{5090C8B9-51FA-4177-B498-6AE838DEE257} = {B019F833-1261-4802-A00C-FC8CBC36E3BD}
+	EndGlobalSection
+EndGlobal

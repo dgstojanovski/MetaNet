@@ -1,0 +1,50 @@
+name: Candidate Release
+on:
+  push:
+    branches: [ master ]
+jobs:
+  generate:
+    name: Generate Candidate Release
+    runs-on: ubuntu-latest
+    env:
+      prefix: 0.1.0
+      tag: rc
+    steps:
+    - id: candidate-checkout
+      name: Checkout latest master commit
+      uses: actions/checkout@v2
+      
+    - id: candidate-setup
+      name: Configure .NET build tools
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+      
+    - id: candidate-cache
+      name: Download cached NuGet packages
+      uses: actions/cache@v2.1.4
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        
+    - id: candidate-generate
+      name: Generate release artifacts
+      uses: ./.github/actions/generate-release
+      with:
+        prerelease: true
+        name: MetaNet
+        version: ${{ env.prefix }}
+        suffix: ${{ format('-{0}.{1}', env.tag, github.run_number) }}
+        source: github
+        key: ${{ secrets.GITHUB_TOKEN }}
+    
+    - id: candidate-release
+      name: Create GitHub release
+      uses: ncipollo/release-action@v1
+      env:
+        release: ${{ format('{0}-{1}.{2}', env.prefix, env.tag, github.run_number) }}
+      with:
+        prerelease: true
+        name: ${{ env.release }}
+        tag: ${{ env.release }}
+        token: ${{ secrets.GITHUB_TOKEN }}

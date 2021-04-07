@@ -1,0 +1,28 @@
+name: Stable Release
+on:
+  push:
+    tags: [ '*.*.*' ]
+jobs:
+  generate:
+    name: Generate Stable Release
+    runs-on: ubuntu-latest
+    steps:
+    - id: stable-checkout
+      name: Checkout tag commit
+      uses: actions/checkout@v2
+      
+    - id: stable-setup
+      name: Configure .NET build tools
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+      
+    - id: stable-generate
+      name: Generate release artifacts
+      uses: ./.github/actions/generate-release
+      with:
+        name: MetaNet
+        version: ${{ github.ref }}
+        prerelease: false
+        source: github
+        key: ${{ secrets.GITHUB_TOKEN }}
