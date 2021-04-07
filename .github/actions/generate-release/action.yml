@@ -54,14 +54,6 @@ runs:
       env:
         arguments: ${{ format('-c {0} --no-build --verbosity normal', inputs.configuration) }}
         
-    - id: dotnet-run
-      name: 'Run code generators'
-      run: dotnet run $arguments --project $project ${{ inputs.output }}
-      shell: bash
-      env:
-        project: ${{ format('{0}.Generator', inputs.name) }}
-        arguments: ${{ format('-c {0} --no-build', inputs.configuration) }}
-        
     - id: dotnet-pack
       name: 'Generate core NuGet package'
       run: dotnet pack $project $arguments -p:PackageVersion=$release
